@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf6rbd1ydarmw"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_3y08a"]
+[ext_resource type="FontFile" uid="uid://17rn6qh4i0q1" path="res://Fonts/PixelifySans.ttf" id="2_y275x"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3y08a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.5
+offset_top = -68.0
+offset_right = 44.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VS CPU" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_y275x")
+text = "VS CPU"
+
+[node name="VS PLAYER" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_y275x")
+text = "VS PLAYER"
+
+[node name="OPTIONS" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_y275x")
+text = "OPTIONS"
+
+[node name="EXIT" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_y275x")
+text = "EXIT"
+
+[connection signal="pressed" from="VBoxContainer/VS CPU" to="." method="_on_vs_cpu_pressed"]
+[connection signal="pressed" from="VBoxContainer/VS PLAYER" to="." method="_on_vs_player_pressed"]
+[connection signal="pressed" from="VBoxContainer/OPTIONS" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/EXIT" to="." method="_on_exit_pressed"]
