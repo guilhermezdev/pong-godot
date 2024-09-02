@@ -2,19 +2,22 @@ extends CharacterBody2D
 
 var win_size : Vector2
 const START_SPEED : int = 500
-const ACCEL : int = 50
+var acceleration : int
 var speed : int
 var dir : Vector2
 
 func _ready():
 	win_size = get_viewport_rect().size
+	var game_settings = ConfigFileHandler.load_game_settings()
+	acceleration = game_settings['ball_acceleration']
+	print(acceleration)
 	
 func _physics_process(delta):
 	var collision = move_and_collide(dir * speed * delta)
 	if collision:
 		var collider = collision.get_collider()
 		if collider == $'../Player' or collider == $'../Player2':
-			speed += ACCEL
+			speed += acceleration
 		dir = dir.bounce(collision.get_normal())
 	
 func start_ball():
