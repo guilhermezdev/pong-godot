@@ -10,7 +10,6 @@ func _ready():
 	win_size = get_viewport_rect().size
 	var game_settings = ConfigFileHandler.load_game_settings()
 	acceleration = game_settings['ball_acceleration']
-	print(acceleration)
 	
 func _physics_process(delta):
 	var collision = move_and_collide(dir * speed * delta)

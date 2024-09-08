@@ -7,7 +7,6 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 
-
 func _on_game_timer_timeout():
 	$Ball.start_ball()
 
