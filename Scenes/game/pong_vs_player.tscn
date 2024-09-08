@@ -1,16 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkbu60opejvop"]
+[gd_scene load_steps=8 format=3 uid="uid://dob1n5mtqw28o"]
 
-[ext_resource type="Script" path="res://Scripts/pong.gd" id="1_cn07e"]
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="2_7pi8x"]
-[ext_resource type="FontFile" uid="uid://17rn6qh4i0q1" path="res://Fonts/PixelifySans.ttf" id="2_xd74n"]
-[ext_resource type="Script" path="res://Scripts/Ball.gd" id="3_0ssf3"]
-[ext_resource type="Script" path="res://Scripts/CPU.gd" id="4_xcvwt"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsduk"]
-size = Vector2(20, 120)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c72gs"]
-size = Vector2(10, 10)
+[ext_resource type="Script" path="res://Scripts/pong.gd" id="1_csjhk"]
+[ext_resource type="FontFile" uid="uid://17rn6qh4i0q1" path="res://Fonts/PixelifySans.ttf" id="2_fgteo"]
+[ext_resource type="PackedScene" uid="uid://cw6gaeymgrylu" path="res://Scenes/game/player.tscn" id="3_xf0j0"]
+[ext_resource type="PackedScene" uid="uid://mliqbfurhxqx" path="res://Scenes/game/ball.tscn" id="5_yaqsf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_km2vs"]
 size = Vector2(1200, 16)
@@ -22,7 +15,7 @@ size = Vector2(1200, 16)
 size = Vector2(24, 600)
 
 [node name="Pong" type="Node"]
-script = ExtResource("1_cn07e")
+script = ExtResource("1_csjhk")
 
 [node name="Background" type="Node" parent="."]
 
@@ -51,7 +44,7 @@ color = Color(0.9479, 0.677569, 1, 1)
 offset_left = 460.0
 offset_right = 500.0
 offset_bottom = 60.0
-theme_override_fonts/font = ExtResource("2_xd74n")
+theme_override_fonts/font = ExtResource("2_fgteo")
 theme_override_font_sizes/font_size = 50
 text = "0"
 horizontal_alignment = 1
@@ -61,68 +54,22 @@ vertical_alignment = 1
 offset_left = 696.0
 offset_right = 736.0
 offset_bottom = 60.0
-theme_override_fonts/font = ExtResource("2_xd74n")
+theme_override_fonts/font = ExtResource("2_fgteo")
 theme_override_font_sizes/font_size = 50
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player" type="StaticBody2D" parent="."]
-position = Vector2(20, 300)
-script = ExtResource("2_7pi8x")
+[node name="Player" parent="." instance=ExtResource("3_xf0j0")]
+up_keys = ["ui_up_2"]
+down_keys = ["ui_down_2"]
 
-[node name="ColorRect" type="ColorRect" parent="Player"]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -60.0
-offset_right = 20.0
-offset_bottom = 60.0
-grow_vertical = 2
-pivot_offset = Vector2(10, 35)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(10, 0)
-shape = SubResource("RectangleShape2D_bsduk")
-
-[node name="CPU" type="StaticBody2D" parent="."]
+[node name="Player2" parent="." instance=ExtResource("3_xf0j0")]
 position = Vector2(1160, 300)
-script = ExtResource("4_xcvwt")
+up_keys = ["ui_up"]
+down_keys = ["ui_down"]
 
-[node name="ColorRect" type="ColorRect" parent="CPU"]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -60.0
-offset_right = 20.0
-offset_bottom = 60.0
-grow_vertical = 2
-pivot_offset = Vector2(10, 35)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CPU"]
-position = Vector2(10, 0)
-shape = SubResource("RectangleShape2D_bsduk")
-
-[node name="Ball" type="CharacterBody2D" parent="."]
-position = Vector2(600, 300)
-collision_mask = 3
-script = ExtResource("3_0ssf3")
-
-[node name="ColorRect" type="ColorRect" parent="Ball"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-shape = SubResource("RectangleShape2D_c72gs")
+[node name="Ball" parent="." instance=ExtResource("5_yaqsf")]
 
 [node name="Borders" type="StaticBody2D" parent="."]
 collision_layer = 2

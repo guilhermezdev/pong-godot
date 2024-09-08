@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkbu60opejvop"]
+
+[ext_resource type="Script" path="res://Scripts/pong.gd" id="1_e183a"]
+[ext_resource type="FontFile" uid="uid://17rn6qh4i0q1" path="res://Fonts/PixelifySans.ttf" id="2_b6qwk"]
+[ext_resource type="PackedScene" uid="uid://cw6gaeymgrylu" path="res://Scenes/game/player.tscn" id="3_7mrvt"]
+[ext_resource type="PackedScene" uid="uid://curi8nn5ohj30" path="res://Scenes/game/cpu.tscn" id="4_guy7m"]
+[ext_resource type="PackedScene" uid="uid://mliqbfurhxqx" path="res://Scenes/game/ball.tscn" id="5_w2dej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_km2vs"]
+size = Vector2(1200, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owlkw"]
+size = Vector2(1200, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhcac"]
+size = Vector2(24, 600)
+
+[node name="Pong" type="Node"]
+script = ExtResource("1_e183a")
+
+[node name="Background" type="Node" parent="."]
+
+[node name="Field" type="ColorRect" parent="Background"]
+offset_right = 1200.0
+offset_bottom = 600.0
+color = Color(0, 0, 0, 1)
+
+[node name="Divider" type="ColorRect" parent="Background"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -300.0
+offset_right = 5.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9479, 0.677569, 1, 1)
+
+[node name="Scores" type="CanvasLayer" parent="Background"]
+
+[node name="PlayerScore" type="Label" parent="Background/Scores"]
+offset_left = 460.0
+offset_right = 500.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("2_b6qwk")
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2Score" type="Label" parent="Background/Scores"]
+offset_left = 696.0
+offset_right = 736.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("2_b6qwk")
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("3_7mrvt")]
+
+[node name="CPU" parent="." instance=ExtResource("4_guy7m")]
+
+[node name="Ball" parent="." instance=ExtResource("5_w2dej")]
+
+[node name="Borders" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="Top" type="CollisionShape2D" parent="Borders"]
+position = Vector2(600, -8)
+shape = SubResource("RectangleShape2D_km2vs")
+
+[node name="Bottom" type="CollisionShape2D" parent="Borders"]
+position = Vector2(600, 608)
+shape = SubResource("RectangleShape2D_owlkw")
+
+[node name="GoalLeft" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalLeft"]
+position = Vector2(-12, 300)
+shape = SubResource("RectangleShape2D_fhcac")
+
+[node name="GoalRight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalRight"]
+position = Vector2(1212, 300)
+shape = SubResource("RectangleShape2D_fhcac")
+
+[node name="GameTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
+[connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
