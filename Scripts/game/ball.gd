@@ -10,15 +10,18 @@ func _ready():
 	win_size = get_viewport_rect().size
 	var game_settings = ConfigFileHandler.load_game_settings()
 	acceleration = game_settings['ball_acceleration']
+	$ColorRect.color = Color(game_settings['ball_color'])
 	
 func _physics_process(delta):
 	var collision = move_and_collide(dir * speed * delta)
 	if collision:
 		var collider = collision.get_collider()
-		if collider == $'../Player' or collider == $'../Player2':
+		if collider.is_in_group('player'):
 			speed += acceleration
+		if collider.is_in_group('paddle'):
+			$BouncePaddleSfx.play()
 		dir = dir.bounce(collision.get_normal())
-	
+		
 func start_ball():
 	position.x = win_size.x / 2
 	position.y = randi_range(50, win_size.y - 50)

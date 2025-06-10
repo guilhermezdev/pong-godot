@@ -5,12 +5,15 @@ var p_height : int
 var ball_pos : Vector2
 var dist_to_ball_on_y : int
 var move_by: int
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	win_height = get_viewport_rect().size.y
 	p_height = $ColorRect.get_size().y
+		
+	var game_settings = ConfigFileHandler.load_game_settings()
+	var color = game_settings[ 'player_2_color' ]
+	$ColorRect.color = color
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	ball_pos = $"../Ball".position
 	dist_to_ball_on_y = position.y - ball_pos.y

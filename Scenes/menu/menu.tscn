@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cf6rbd1ydarmw"]
 
-[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_3y08a"]
-[ext_resource type="FontFile" uid="uid://17rn6qh4i0q1" path="res://Fonts/PixelifySans.ttf" id="2_y275x"]
+[ext_resource type="Script" path="res://scripts/menu/menu.gd" id="1_wciar"]
+[ext_resource type="FontFile" uid="uid://17rn6qh4i0q1" path="res://fonts/PixelifySans.ttf" id="2_cqwle"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3y08a")
+script = ExtResource("1_wciar")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
@@ -18,7 +18,7 @@ offset_left = 512.0
 offset_top = 72.0
 offset_right = 680.0
 offset_bottom = 160.0
-theme_override_fonts/font = ExtResource("2_y275x")
+theme_override_fonts/font = ExtResource("2_cqwle")
 theme_override_font_sizes/font_size = 72
 text = "PONG"
 
@@ -29,31 +29,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.5
-offset_top = -68.0
-offset_right = 44.5
-offset_bottom = 68.0
+offset_left = -100.0
+offset_top = -62.0
+offset_right = 100.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VS CPU" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_y275x")
+theme_override_fonts/font = ExtResource("2_cqwle")
 text = "VS CPU"
 
 [node name="VS PLAYER" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_y275x")
+theme_override_fonts/font = ExtResource("2_cqwle")
 text = "VS PLAYER"
 
 [node name="OPTIONS" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_y275x")
+theme_override_fonts/font = ExtResource("2_cqwle")
 text = "OPTIONS"
 
 [node name="EXIT" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_y275x")
+theme_override_fonts/font = ExtResource("2_cqwle")
 text = "EXIT"
 
 [connection signal="pressed" from="VBoxContainer/VS CPU" to="." method="_on_vs_cpu_pressed"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://curi8nn5ohj30"]
 
-[ext_resource type="Script" path="res://Scripts/cpu.gd" id="1_k04ln"]
+[ext_resource type="Script" path="res://scripts/game/cpu.gd" id="1_k04ln"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bsduk"]
 size = Vector2(20, 120)
 
-[node name="CPU" type="StaticBody2D"]
+[node name="CPU" type="StaticBody2D" groups=["paddle"]]
 position = Vector2(1160, 300)
 script = ExtResource("1_k04ln")
 

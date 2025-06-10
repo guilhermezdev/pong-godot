@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://bkbu60opejvop"]
 
-[ext_resource type="Script" path="res://Scripts/pong.gd" id="1_e183a"]
-[ext_resource type="FontFile" uid="uid://17rn6qh4i0q1" path="res://Fonts/PixelifySans.ttf" id="2_b6qwk"]
-[ext_resource type="PackedScene" uid="uid://cw6gaeymgrylu" path="res://Scenes/game/player.tscn" id="3_7mrvt"]
-[ext_resource type="PackedScene" uid="uid://curi8nn5ohj30" path="res://Scenes/game/cpu.tscn" id="4_guy7m"]
-[ext_resource type="PackedScene" uid="uid://mliqbfurhxqx" path="res://Scenes/game/ball.tscn" id="5_w2dej"]
+[ext_resource type="Script" path="res://scripts/game/pong.gd" id="1_e183a"]
+[ext_resource type="PackedScene" uid="uid://557fjlwbtxr" path="res://scenes/game/background.tscn" id="2_g3037"]
+[ext_resource type="PackedScene" uid="uid://cw6gaeymgrylu" path="res://scenes/game/player.tscn" id="3_7mrvt"]
+[ext_resource type="PackedScene" uid="uid://curi8nn5ohj30" path="res://scenes/game/cpu.tscn" id="4_guy7m"]
+[ext_resource type="PackedScene" uid="uid://mliqbfurhxqx" path="res://scenes/game/ball.tscn" id="5_w2dej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_km2vs"]
 size = Vector2(1200, 16)
@@ -18,48 +18,7 @@ size = Vector2(24, 600)
 [node name="Pong" type="Node"]
 script = ExtResource("1_e183a")
 
-[node name="Background" type="Node" parent="."]
-
-[node name="Field" type="ColorRect" parent="Background"]
-offset_right = 1200.0
-offset_bottom = 600.0
-color = Color(0, 0, 0, 1)
-
-[node name="Divider" type="ColorRect" parent="Background"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -300.0
-offset_right = 5.0
-offset_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9479, 0.677569, 1, 1)
-
-[node name="Scores" type="CanvasLayer" parent="Background"]
-
-[node name="PlayerScore" type="Label" parent="Background/Scores"]
-offset_left = 460.0
-offset_right = 500.0
-offset_bottom = 60.0
-theme_override_fonts/font = ExtResource("2_b6qwk")
-theme_override_font_sizes/font_size = 50
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2Score" type="Label" parent="Background/Scores"]
-offset_left = 696.0
-offset_right = 736.0
-offset_bottom = 60.0
-theme_override_fonts/font = ExtResource("2_b6qwk")
-theme_override_font_sizes/font_size = 50
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Background" parent="." instance=ExtResource("2_g3037")]
 
 [node name="Player" parent="." instance=ExtResource("3_7mrvt")]
 

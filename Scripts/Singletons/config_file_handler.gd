@@ -12,6 +12,11 @@ func _ready():
 
 func _write_default_values():
 	config.set_value('game', 'ball_acceleration', 50)
+	config.set_value('game', 'player_1_color', 'FFF')
+	config.set_value('game', 'player_2_color', 'FFF')
+	config.set_value('game', 'ball_color', 'FFF')
+	config.set_value('game', 'field_color', '000')
+	config.set_value('game', 'field_divider_color', 'FFF')
 	config.save(SETTINGS_FILE_PATH)
 	
 func load_game_settings():

@@ -11,18 +11,22 @@ config_version=5
 [application]
 
 config/name="pong"
-run/main_scene="res://Scenes/menu.tscn"
+run/main_scene="res://scenes/menu/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-ConfigFileHandler="*res://Scripts/Singletons/config_file_handler.gd"
+ConfigFileHandler="*res://scripts/Singletons/config_file_handler.gd"
 
 [display]
 
 window/size/viewport_width=1200
 window/size/viewport_height=600
+
+[gui]
+
+theme/custom_font="res://fonts/PixelifySans.ttf"
 
 [input]
 

@@ -1,0 +1,117 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhjimfv8y3umj"]
+
+[ext_resource type="Script" path="res://scripts/settings/color_settings.gd" id="1_onrle"]
+[ext_resource type="FontFile" uid="uid://17rn6qh4i0q1" path="res://fonts/PixelifySans.ttf" id="2_ukpf2"]
+
+[node name="ColorSettings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_onrle")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -275.5
+offset_right = 149.0
+offset_bottom = 275.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Player1Color" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Player1ColorLabel" type="Label" parent="VBoxContainer/Player1Color"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Player 1 Color"
+
+[node name="Player1ColorButton" type="ColorPickerButton" parent="VBoxContainer/Player1Color"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Player2Color" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Player2ColorLabel" type="Label" parent="VBoxContainer/Player2Color"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Player 2 Color"
+
+[node name="Player2ColorButton" type="ColorPickerButton" parent="VBoxContainer/Player2Color"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FieldColor" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="FieldDividerColorLabel" type="Label" parent="VBoxContainer/FieldColor"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Field Color"
+
+[node name="FieldColorButton" type="ColorPickerButton" parent="VBoxContainer/FieldColor"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FieldDividerColor" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="FieldDividerColorLabel" type="Label" parent="VBoxContainer/FieldDividerColor"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Field Divider Color"
+
+[node name="FieldDividerColorButton" type="ColorPickerButton" parent="VBoxContainer/FieldDividerColor"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BallColor" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BallColorLabel" type="Label" parent="VBoxContainer/BallColor"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Ball Color"
+
+[node name="BallColorButton" type="ColorPickerButton" parent="VBoxContainer/BallColor"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SaveButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ukpf2")
+theme_override_font_sizes/font_size = 25
+text = "SAVE"
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ukpf2")
+theme_override_font_sizes/font_size = 25
+text = "BACK"
+
+[connection signal="color_changed" from="VBoxContainer/Player1Color/Player1ColorButton" to="." method="_on_player_1_color_button_color_changed"]
+[connection signal="color_changed" from="VBoxContainer/Player2Color/Player2ColorButton" to="." method="_on_player_2_color_button_color_changed"]
+[connection signal="color_changed" from="VBoxContainer/FieldColor/FieldColorButton" to="." method="_on_field_color_button_color_changed"]
+[connection signal="color_changed" from="VBoxContainer/FieldDividerColor/FieldDividerColorButton" to="." method="_on_field_divider_color_button_color_changed"]
+[connection signal="color_changed" from="VBoxContainer/BallColor/BallColorButton" to="." method="_on_ball_color_button_color_changed"]
+[connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
