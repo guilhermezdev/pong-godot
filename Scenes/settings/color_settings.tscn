@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhjimfv8y3umj"]
 
-[ext_resource type="Script" path="res://scripts/settings/color_settings.gd" id="1_onrle"]
+[ext_resource type="Script" uid="uid://cf61mcgxo3xs6" path="res://scripts/settings/color_settings.gd" id="1_onrle"]
 [ext_resource type="FontFile" uid="uid://17rn6qh4i0q1" path="res://fonts/PixelifySans.ttf" id="2_ukpf2"]
 
 [node name="ColorSettings" type="Control"]
