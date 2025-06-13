@@ -4,9 +4,9 @@ var win_height : int
 var p_height : int
 
 @export var player_type = 1
-
 @export var up_keys = ['ui_up', 'ui_up_2']
 @export var down_keys = ['ui_down', 'ui_down_2']
+@export var speed := 500
 
 func _ready():
 	win_height = get_viewport_rect().size.y
@@ -19,9 +19,9 @@ func _ready():
 func _process(delta):
 	for key in up_keys:
 		if Input.is_action_pressed(key):
-			position.y -= get_parent().PADDLE_SPEED * delta
+			position.y -= speed * delta
 	for key in down_keys:
 		if Input.is_action_pressed(key):
-			position.y += get_parent().PADDLE_SPEED * delta
+			position.y += speed * delta
 			
 	position.y = clamp(position.y, p_height / 2, win_height - p_height / 2)

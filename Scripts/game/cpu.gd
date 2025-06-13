@@ -6,6 +6,8 @@ var ball_pos : Vector2
 var dist_to_ball_on_y : int
 var move_by: int
 
+@export var speed := 500
+
 func _ready():
 	win_height = get_viewport_rect().size.y
 	p_height = $ColorRect.get_size().y
@@ -15,10 +17,14 @@ func _ready():
 	$ColorRect.color = color
 
 func _process(delta):
-	ball_pos = $"../Ball".position
+	var balls = get_tree().get_nodes_in_group("ball")
+	if balls.is_empty():
+		return
+	
+	ball_pos = balls[0].position
 	dist_to_ball_on_y = position.y - ball_pos.y
 	
-	move_by = get_parent().PADDLE_SPEED * delta
+	move_by = speed * delta
 	
 	if abs(dist_to_ball_on_y) > move_by:
 		move_by = move_by * (dist_to_ball_on_y / abs(dist_to_ball_on_y))

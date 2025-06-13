@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://557fjlwbtxr"]
+
+[ext_resource type="Script" path="res://scripts/background.gd" id="1_05ktx"]
+[ext_resource type="FontFile" uid="uid://17rn6qh4i0q1" path="res://fonts/PixelifySans.ttf" id="1_67m7h"]
+[ext_resource type="AudioStream" uid="uid://d3bd4cofp7ptp" path="res://audio/goal.mp3" id="2_sh007"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqjwo"]
+size = Vector2(1200, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yog7"]
+size = Vector2(1200, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ey1vm"]
+size = Vector2(24, 600)
+
+[node name="Board" type="Node2D"]
+script = ExtResource("1_05ktx")
+
+[node name="Field" type="ColorRect" parent="."]
+offset_right = 1200.0
+offset_bottom = 600.0
+color = Color(0, 0, 0, 1)
+
+[node name="Divider" type="ColorRect" parent="Field"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -300.0
+offset_right = 5.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9479, 0.677569, 1, 1)
+
+[node name="Scores" type="CanvasLayer" parent="."]
+
+[node name="PlayerScore" type="Label" parent="Scores"]
+offset_left = 460.0
+offset_right = 500.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("1_67m7h")
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2Score" type="Label" parent="Scores"]
+offset_left = 696.0
+offset_right = 736.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("1_67m7h")
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoalSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_sh007")
+
+[node name="Borders" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="Top" type="CollisionShape2D" parent="Borders"]
+position = Vector2(600, -8)
+shape = SubResource("RectangleShape2D_wqjwo")
+
+[node name="Bottom" type="CollisionShape2D" parent="Borders"]
+position = Vector2(600, 608)
+shape = SubResource("RectangleShape2D_1yog7")
+
+[node name="GoalLeft" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalLeft"]
+position = Vector2(-12, 300)
+shape = SubResource("RectangleShape2D_ey1vm")
+
+[node name="GoalRight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalRight"]
+position = Vector2(1212, 300)
+shape = SubResource("RectangleShape2D_ey1vm")
+
+[connection signal="area_entered" from="GoalLeft" to="." method="_on_goal_left_area_entered"]
+[connection signal="area_entered" from="GoalRight" to="." method="_on_goal_right_area_entered"]

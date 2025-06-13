@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
+@export var start_speed : int = 500
+@onready var sfx = $BouncePaddleSfx
+
 var win_size : Vector2
-const START_SPEED : int = 500
 var acceleration : int
 var speed : int
 var dir : Vector2
@@ -19,13 +21,13 @@ func _physics_process(delta):
 		if collider.is_in_group('player'):
 			speed += acceleration
 		if collider.is_in_group('paddle'):
-			$BouncePaddleSfx.play()
+			sfx.play()
 		dir = dir.bounce(collision.get_normal())
 		
 func start_ball():
 	position.x = win_size.x / 2
 	position.y = randi_range(50, win_size.y - 50)
-	speed = START_SPEED
+	speed = start_speed
 	dir = random_direction()
 	
 func random_direction():

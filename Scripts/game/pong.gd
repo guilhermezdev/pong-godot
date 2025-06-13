@@ -1,23 +1,24 @@
-extends Node
+extends Node2D
 
-var score := [0, 0]
-const PADDLE_SPEED : int = 500
+@export var game_scale := 1.0
+@export var player_1 : PackedScene
+@export var player_2: PackedScene
 
-func _process(delta):
+func _ready():
+	var p1 = player_1.instantiate()
+	var p2 = player_2.instantiate()
+
+	p1.position = Vector2(20, 300)
+	p2.position = Vector2(1160, 300)
+
+	add_child(p1)
+	add_child(p2)
+	
+	scale = Vector2.ONE * game_scale
+	
+func _process(_delta):
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
 
 func _on_game_timer_timeout():
 	$Ball.start_ball()
-
-func _on_goal_left_body_entered(body):
-	score[1] += 1
-	$Background/Scores/Player2Score.text = str(score[1])
-	$Background/GoalSfx.play()
-	$GameTimer.start()
-
-func _on_goal_right_body_entered(body):
-	score[0] += 1
-	$Background/Scores/PlayerScore.text = str(score[0])
-	$Background/GoalSfx.play()
-	$GameTimer.start()
