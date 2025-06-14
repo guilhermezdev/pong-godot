@@ -1,29 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://mliqbfurhxqx"]
+[gd_scene load_steps=5 format=3 uid="uid://mliqbfurhxqx"]
 
 [ext_resource type="Script" uid="uid://dhyjq4d02jksu" path="res://scripts/game/ball.gd" id="1_4ijot"]
+[ext_resource type="Texture2D" uid="uid://dae2ejoaxc1w1" path="res://images/baseball.png" id="2_lt7fn"]
 [ext_resource type="AudioStream" uid="uid://b2herwebhho0o" path="res://audio/bounce.mp3" id="2_trfry"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c72gs"]
-size = Vector2(10, 10)
+size = Vector2(32, 32)
 
 [node name="Ball" type="CharacterBody2D" groups=["ball"]]
 collision_mask = 3
 script = ExtResource("1_4ijot")
+rotation_speed = 5
+ball_type = 5
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_lt7fn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.7, 0.7)
 shape = SubResource("RectangleShape2D_c72gs")
 
 [node name="BouncePaddleSfx" type="AudioStreamPlayer2D" parent="."]

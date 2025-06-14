@@ -20,6 +20,11 @@ func _process(_delta):
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
 
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_ESCAPE:
+			get_tree().paused = true
+
 func _on_game_timer_timeout():
 	$Ball.start_ball()
 

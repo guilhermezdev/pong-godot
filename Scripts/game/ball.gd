@@ -1,20 +1,35 @@
 extends CharacterBody2D
 
-@export var start_speed : int = 500
+@export var start_speed := 500
+@export var rotation_speed := 10
 @onready var sfx = $BouncePaddleSfx
+@onready var sprite = $Sprite
 
 var win_size : Vector2
 var acceleration : int
 var speed : int
 var dir : Vector2
 
+@export_range(0, 6, 1) var ball_type: int = 0
+var ball_textures = [
+	preload("res://images/baseball.png"),
+	preload("res://images/basketball.png"),
+	preload("res://images/bowling.png"),
+	preload("res://images/football.png"),
+	preload("res://images/golf.png"),
+	preload("res://images/tennis.png"),
+	preload("res://images/volleyball.png")
+]
+
 func _ready():
+	visible = false
 	win_size = get_viewport_rect().size
 	var game_settings = ConfigFileHandler.load_game_settings()
 	acceleration = game_settings['ball_acceleration']
-	$ColorRect.color = Color(game_settings['ball_color'])
+	set_ball_texture(ball_type)
 	
 func _physics_process(delta):
+	rotation += rotation_speed * delta
 	var collision = move_and_collide(dir * speed * delta)
 	if collision:
 		var collider = collision.get_collider()
@@ -24,9 +39,15 @@ func _physics_process(delta):
 			sfx.play()
 		dir = dir.bounce(collision.get_normal())
 		
+func set_ball_texture(index: int):
+	if index >= 0 and index < ball_textures.size():
+		sprite.texture = ball_textures[index]
+
 func start_ball():
+	visible = false
 	position.x = win_size.x / 2
 	position.y = randi_range(50, win_size.y - 50)
+	visible = true
 	speed = start_speed
 	dir = random_direction()
 	

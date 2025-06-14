@@ -14,14 +14,12 @@ func _ready():
 	divider.color = Color(game_settings['field_divider_color'])
 
 func _on_goal_left_body_entered(body):
-	print(body)
 	score[1] += 1
 	$Scores/Player2Score.text = str(score[1])
 	$GoalSfx.play()
 	goal_scored.emit()
 
 func _on_goal_right_body_entered(body):
-	print(body)
 	score[0] += 1
 	$Scores/PlayerScore.text = str(score[0])
 	$GoalSfx.play()
