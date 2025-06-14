@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://557fjlwbtxr"]
 
-[ext_resource type="Script" uid="uid://datipw5p85naa" path="res://scripts/background.gd" id="1_05ktx"]
+[ext_resource type="Script" uid="uid://datipw5p85naa" path="res://scripts/game/board.gd" id="1_05ktx"]
 [ext_resource type="FontFile" uid="uid://17rn6qh4i0q1" path="res://fonts/PixelifySans.ttf" id="1_67m7h"]
 [ext_resource type="AudioStream" uid="uid://d3bd4cofp7ptp" path="res://audio/goal.mp3" id="2_sh007"]
 

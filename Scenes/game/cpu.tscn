@@ -6,7 +6,6 @@
 size = Vector2(20, 120)
 
 [node name="CPU" type="StaticBody2D" groups=["paddle"]]
-position = Vector2(1160, 300)
 script = ExtResource("1_k04ln")
 
 [node name="ColorRect" type="ColorRect" parent="."]
