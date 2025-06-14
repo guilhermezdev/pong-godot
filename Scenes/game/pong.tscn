@@ -10,9 +10,11 @@ script = ExtResource("1_gj5re")
 [node name="Board" parent="." instance=ExtResource("2_k00ua")]
 
 [node name="Ball" parent="." instance=ExtResource("5_agcgc")]
+position = Vector2(600, 296)
 
 [node name="GameTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
 
+[connection signal="goal_scored" from="Board" to="." method="_on_board_goal_scored"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

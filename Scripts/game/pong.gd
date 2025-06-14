@@ -22,3 +22,6 @@ func _process(_delta):
 
 func _on_game_timer_timeout():
 	$Ball.start_ball()
+
+func _on_board_goal_scored():
+	$GameTimer.start()

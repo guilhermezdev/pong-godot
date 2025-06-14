@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://557fjlwbtxr"]
+[gd_scene load_steps=8 format=3 uid="uid://557fjlwbtxr"]
 
 [ext_resource type="Script" uid="uid://datipw5p85naa" path="res://scripts/game/board.gd" id="1_05ktx"]
 [ext_resource type="FontFile" uid="uid://17rn6qh4i0q1" path="res://fonts/PixelifySans.ttf" id="1_67m7h"]
@@ -12,6 +12,9 @@ size = Vector2(1200, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ey1vm"]
 size = Vector2(24, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jv87"]
+size = Vector2(20, 600)
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_05ktx")
@@ -81,8 +84,8 @@ shape = SubResource("RectangleShape2D_ey1vm")
 [node name="GoalRight" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalRight"]
-position = Vector2(1212, 300)
-shape = SubResource("RectangleShape2D_ey1vm")
+position = Vector2(1210, 300)
+shape = SubResource("RectangleShape2D_8jv87")
 
-[connection signal="area_entered" from="GoalLeft" to="." method="_on_goal_left_area_entered"]
-[connection signal="area_entered" from="GoalRight" to="." method="_on_goal_right_area_entered"]
+[connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
+[connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]

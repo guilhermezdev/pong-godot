@@ -1,5 +1,7 @@
 extends Node2D
 
+signal goal_scored
+
 @onready var field = $Field
 @onready var divider = $Field/Divider
 
@@ -11,16 +13,16 @@ func _ready():
 	field.color = Color(game_settings['field_color'])
 	divider.color = Color(game_settings['field_divider_color'])
 
-func _on_goal_left_area_entered(_area):
-	print('aaa')
+func _on_goal_left_body_entered(body):
+	print(body)
 	score[1] += 1
 	$Scores/Player2Score.text = str(score[1])
 	$GoalSfx.play()
-	#$GameTimer.start()
+	goal_scored.emit()
 
-func _on_goal_right_area_entered(_area):
-	print('bbb')
+func _on_goal_right_body_entered(body):
+	print(body)
 	score[0] += 1
 	$Scores/PlayerScore.text = str(score[0])
 	$GoalSfx.play()
-	#$GameTimer.start()
+	goal_scored.emit()
