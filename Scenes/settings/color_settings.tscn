@@ -79,19 +79,6 @@ text = "Field Divider Color"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BallColor" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="BallColorLabel" type="Label" parent="VBoxContainer/BallColor"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Ball Color"
-
-[node name="BallColorButton" type="ColorPickerButton" parent="VBoxContainer/BallColor"]
-layout_mode = 2
-size_flags_horizontal = 3
-
 [node name="Spacer" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -112,6 +99,5 @@ text = "BACK"
 [connection signal="color_changed" from="VBoxContainer/Player2Color/Player2ColorButton" to="." method="_on_player_2_color_button_color_changed"]
 [connection signal="color_changed" from="VBoxContainer/FieldColor/FieldColorButton" to="." method="_on_field_color_button_color_changed"]
 [connection signal="color_changed" from="VBoxContainer/FieldDividerColor/FieldDividerColorButton" to="." method="_on_field_divider_color_button_color_changed"]
-[connection signal="color_changed" from="VBoxContainer/BallColor/BallColorButton" to="." method="_on_ball_color_button_color_changed"]
 [connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
