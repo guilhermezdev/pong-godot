@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-var win_height : int
+var win_height := 600
 var p_height : int
 
 @export var player_type = 1
@@ -9,7 +9,6 @@ var p_height : int
 @export var speed := 500
 
 func _ready():
-	win_height = get_viewport_rect().size.y
 	p_height = $ColorRect.get_size().y
 	
 	var game_settings = ConfigFileHandler.load_game_settings()

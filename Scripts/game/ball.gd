@@ -4,8 +4,8 @@ extends CharacterBody2D
 @export var rotation_speed := 10
 @onready var sfx = $BouncePaddleSfx
 @onready var sprite = $Sprite
+@onready var collision_shape_2d = $CollisionShape2D
 
-var win_size : Vector2
 var acceleration : int
 var speed : int
 var dir : Vector2
@@ -22,8 +22,8 @@ var ball_textures = [
 ]
 
 func _ready():
+	collision_shape_2d.disabled = true
 	visible = false
-	win_size = get_viewport_rect().size
 	var game_settings = ConfigFileHandler.load_game_settings()
 	acceleration = game_settings['ball_acceleration']
 	set_ball_texture(ball_type)
@@ -44,9 +44,10 @@ func set_ball_texture(index: int):
 		sprite.texture = ball_textures[index]
 
 func start_ball():
+	collision_shape_2d.disabled = false
 	visible = false
-	position.x = win_size.x / 2
-	position.y = randi_range(50, win_size.y - 50)
+	position.x = 1200 / 2
+	position.y = randi_range(50, 600 - 50)
 	visible = true
 	speed = start_speed
 	dir = random_direction()
