@@ -4,12 +4,15 @@ extends Node2D
 @export var player_1 : PackedScene
 @export var player_2: PackedScene
 
+@onready var first_position = $FirstPosition
+@onready var second_position = $SecondPosition
+
 func _ready():
 	var p1 = player_1.instantiate()
 	var p2 = player_2.instantiate()
 
-	p1.position = Vector2(20, 300)
-	p2.position = Vector2(1160, 300)
+	p1.position = first_position.position
+	p2.position = second_position.position
 
 	add_child(p1)
 	add_child(p2)

@@ -12,6 +12,12 @@ script = ExtResource("1_gj5re")
 [node name="Ball" parent="." instance=ExtResource("5_agcgc")]
 position = Vector2(600, 296)
 
+[node name="FirstPosition" type="Marker2D" parent="."]
+position = Vector2(20, 300)
+
+[node name="SecondPosition" type="Marker2D" parent="."]
+position = Vector2(1160, 300)
+
 [node name="GameTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
